@@ -41,6 +41,9 @@ dependencies:
   # A simple way to access state from anywhere in your application while robust and testable.
   flutter_riverpod: ^2.4.9
 
+  # A declarative router for Flutter based on Navigation 2 supporting deep linking, data-driven routes and more
+  go_router: ^13.0.1
+
   # Contains code to deal with internationalized/localized messages, date and number formatting and parsing, bi-directional text, and other internationalization issues.
   intl: ^0.18.1
 

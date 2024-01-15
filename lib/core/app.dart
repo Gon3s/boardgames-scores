@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../generated/l10n.dart';
 import 'app_env.dart';
-import 'presentation/theme/app_theme.dart';
+import 'theme/app_theme.dart';
+import 'route/router.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(appThemeProvider);
+
+    return MaterialApp.router(
       title: EnvInfo.appName,
       theme: AppThemes.lightTheme,
-      darkTheme: AppThemes.lightTheme,
-      themeMode: ThemeMode.light,
+      darkTheme: AppThemes.darkTheme,
+      themeMode: themeMode,
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         S.delegate,
@@ -23,31 +27,9 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text(
-              EnvInfo.appName,
-            ),
-          ),
-          body: const Center(
-            child: _MyHomePage(),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _MyHomePage extends StatelessWidget {
-  const _MyHomePage();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text(S.of(context).helloWorld('Flutter')),
-      ),
+      routeInformationParser: router.routeInformationParser,
+      routerDelegate: router.routerDelegate,
+      routeInformationProvider: router.routeInformationProvider,
     );
   }
 }

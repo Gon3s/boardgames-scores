@@ -5,8 +5,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/app.dart';
 import 'core/app_env.dart';
 
-Future<void> mainCommon(Environment env) async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  const String environment = String.fromEnvironment('Environment');
+  _setEnvironmentFromStringValue(environment);
 
   _setupSystemUIOverlayStyle();
   _setupPreferredOrientations();
@@ -30,4 +33,18 @@ void _setupSystemUIOverlayStyle() {
       systemNavigationBarColor: Colors.black,
     ),
   );
+}
+
+void _setEnvironmentFromStringValue(String environment) {
+  switch (environment) {
+    case 'mock':
+      EnvInfo.init(Environment.mock);
+      break;
+    case 'dev':
+      EnvInfo.init(Environment.dev);
+      break;
+    case 'prod':
+      EnvInfo.init(Environment.prod);
+      break;
+  }
 }

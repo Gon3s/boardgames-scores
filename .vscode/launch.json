@@ -4,17 +4,107 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+    //> MOCK
     {
-      "name": "Flutter Start Kit (DEV)",
+      "name": "MOCK Debug",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_dev.dart"
+      "flutterMode": "debug",
+      "program": "lib/main.dart",
+      "toolArgs": [
+        "--dart-define",
+        "Environment=mock"
+      ]
     },
     {
-      "name": "Flutter Start Kit",
+      "name": "MOCK Profile",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_prod.dart"
-    }
+      "flutterMode": "profile",
+      "program": "lib/main.dart",
+      "toolArgs": [
+        "--dart-define",
+        "Environment=mock"
+      ]
+    },
+    {
+      "name": "MOCK Release",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "program": "lib/main.dart",
+      "toolArgs": [
+        "--dart-define",
+        "Environment=mock"
+      ]
+    },
+    //@ DEV
+    {
+      "name": "DEV Debug",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "program": "lib/main.dart",
+      "toolArgs": [
+        "--dart-define",
+        "Environment=dev"
+      ]
+    },
+    {
+      "name": "DEV Profile",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "program": "lib/main.dart",
+      "toolArgs": [
+        "--dart-define",
+        "Environment=dev"
+      ]
+    },
+    {
+      "name": "DEV Release",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "program": "lib/main.dart",
+      "toolArgs": [
+        "--dart-define",
+        "Environment=dev"
+      ]
+    },
+    //> PROD
+    {
+      "name": "PROD Debug",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "program": "lib/main.dart",
+      "toolArgs": [
+        "--dart-define",
+        "Environment=prod"
+      ]
+    },
+    {
+      "name": "PROD Profile",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "program": "lib/main.dart",
+      "toolArgs": [
+        "--dart-define",
+        "Environment=prod"
+      ]
+    },
+    {
+      "name": "PROD Release",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "program": "lib/main.dart",
+      "toolArgs": [
+        "--dart-define",
+        "Environment=prod"
+      ]
+    },
   ]
 }

@@ -1,0 +1,1 @@
+const String appThemeStorageKey = 'AppTheme';

@@ -1,26 +1,15 @@
+library app_theme;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_starter_kit/core/constants/app_values.dart';
+import 'package:flutter_starter_kit/core/data/local/storage_service.dart';
+import 'package:flutter_starter_kit/core/utils/colored_debug_printer.dart';
 
-final appThemeProvider = StateNotifierProvider<AppThemeModeNotifier, ThemeMode>((ref) {
-  return AppThemeModeNotifier();
-});
+import '../domain/provider/shared_preferences_storage_service_provider.dart';
 
-class AppThemeModeNotifier extends StateNotifier<ThemeMode> {
-  ThemeMode currentTheme = ThemeMode.light;
-
-  AppThemeModeNotifier() : super(ThemeMode.light) {
-    getCurrentTheme();
-  }
-
-  void toggleTheme() {
-    state = state == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
-  }
-
-  void getCurrentTheme() async {
-    final value = ThemeMode.values.byName('light');
-    state = value;
-  }
-}
+part 'provider_theme.dart';
 
 class AppThemes {
   AppThemes._();

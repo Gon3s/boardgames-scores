@@ -47,4 +47,6 @@ void _setEnvironmentFromStringValue(String environment) {
       EnvInfo.init(Environment.prod);
       break;
   }
+
+  EnvInfo.describe();
 }

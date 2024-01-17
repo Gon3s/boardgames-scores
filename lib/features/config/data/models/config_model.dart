@@ -1,10 +1,14 @@
-import 'package:poc_generic_app/features/config/domain/entities/config.dart';
+import '../../domain/entities/config.dart';
 
 class ConfigModel extends ConfigEntity {
-  const ConfigModel({required super.appName});
+  const ConfigModel({required super.appName, required super.lightColors, required super.darkColors});
 
   factory ConfigModel.fromJson(Map<String, dynamic> json) {
-    return ConfigModel(appName: json['app_name']);
+    return ConfigModel(
+      appName: json['app_name'],
+      lightColors: json['colors']['light'],
+      darkColors: json['colors']['dark'],
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -14,6 +18,15 @@ class ConfigModel extends ConfigEntity {
   }
 
   ConfigEntity toEntity() {
-    return ConfigEntity(appName: appName);
+    return ConfigEntity(
+      appName: appName,
+      lightColors: lightColors,
+      darkColors: darkColors,
+    );
+  }
+
+  @override
+  String toString() {
+    return 'ConfigModel(appName: $appName, lightColors: $lightColors, darkColors: $darkColors)';
   }
 }

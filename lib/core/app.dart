@@ -73,8 +73,6 @@ class _MaterialApp extends ConsumerWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: themeMode,
-      theme: AppThemes.lightTheme,
-      darkTheme: AppThemes.darkTheme,
       home: Scaffold(
         body: SizedBox.expand(
           child: Center(child: body),

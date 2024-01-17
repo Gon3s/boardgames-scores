@@ -1,3 +1,15 @@
 {
-  "app_name": "POC Generic APP (MOCK)"
+  "app_name": "POC Generic APP (MOCK)",
+  "colors": {
+    "light": {
+      "primary": "#00629D",
+      "secondary": "#FC975",
+      "error": "#BA1A1A"
+    },
+    "dark": {
+      "primary": "#98CBFF",
+      "secondary": "#FFC19B",
+      "error": "#FFB4AB"
+    }
+  }
 }

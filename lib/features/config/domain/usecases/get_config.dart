@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:poc_generic_app/core/error/failure.dart';
-import 'package:poc_generic_app/features/config/domain/entities/config.dart';
 
+import '../../../../core/error/failure.dart';
+import '../entities/config.dart';
 import '../repositories/config_repository.dart';
 
 class GetConfigUseCase {

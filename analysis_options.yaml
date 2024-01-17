@@ -35,3 +35,4 @@ linter:
     no_leading_underscores_for_local_identifiers: false
     use_colored_box: false
     non_constant_identifier_names: false
+    prefer_relative_imports: true

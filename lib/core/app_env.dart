@@ -1,5 +1,4 @@
-import 'package:poc_generic_app/features/config/domain/entities/config.dart';
-
+import '../features/config/domain/entities/config.dart';
 import 'utils/colored_debug_printer.dart';
 
 enum Environment { mock, dev, prod }

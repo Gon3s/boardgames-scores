@@ -1,4 +1,4 @@
-package com.apside.flutter_starter_kit
+package com.apside.poc_generic_app
 
 import io.flutter.embedding.android.FlutterActivity
 

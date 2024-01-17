@@ -3,10 +3,9 @@ library app_theme;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_starter_kit/core/constants/app_values.dart';
-import 'package:flutter_starter_kit/core/data/local/storage_service.dart';
-import 'package:flutter_starter_kit/core/utils/colored_debug_printer.dart';
 
+import '../../core/data/local/storage_service.dart';
+import '../constants/app_values.dart';
 import '../domain/provider/shared_preferences_storage_service_provider.dart';
 
 part 'provider_theme.dart';

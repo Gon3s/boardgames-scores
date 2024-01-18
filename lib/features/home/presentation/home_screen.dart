@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/app_env.dart';
+import '../../../core/widgets/scaffold_widget.dart';
 import '../../../core/widgets/toggle_theme.dart';
 import '../../../generated/l10n.dart';
 
@@ -11,16 +12,16 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(EnvInfo.appName),
-          actions: const [
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: ToggleTheme(),
-            ),
-          ],
-        ),
+      child: ScaffoldWidget(
+        title: Text(EnvInfo.appName),
+        displayAppBar: true,
+        appBarDisplayLeading: false,
+        appBarActions: const [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: ToggleTheme(),
+          ),
+        ],
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -30,6 +31,7 @@ class HomeScreen extends ConsumerWidget {
             ],
           ),
         ),
+        displayBottomNavigationBar: true,
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../../../../core/app_env.dart';
 import '../../../../core/error/exception.dart';
+import '../../../../core/utils/colored_debug_printer.dart';
 import '../models/config_model.dart';
 
 abstract class LocalDataSource {
@@ -17,6 +18,7 @@ class LocalDataSourceImpl implements LocalDataSource {
       final data = await json.decode(jsonString);
       return ConfigModel.fromJson(data);
     } catch (e) {
+      Print.red('DLOG', e.toString());
       throw ServerExeption();
     }
   }

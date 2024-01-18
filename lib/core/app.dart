@@ -7,6 +7,7 @@ import '../features/config/domain/providers/config_future_provider.dart';
 import 'app_env.dart';
 import 'route/router.dart';
 import 'theme/app_theme.dart';
+import 'utils/colored_debug_printer.dart';
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
@@ -36,7 +37,8 @@ class MyApp extends ConsumerWidget {
         routerDelegate: router.routerDelegate,
         routeInformationProvider: router.routeInformationProvider,
       );
-    }, error: (_, __) {
+    }, error: (_, error) {
+      Print.red('DLOG', error.toString());
       return const _MaterialApp(
         Column(
           mainAxisAlignment: MainAxisAlignment.center,

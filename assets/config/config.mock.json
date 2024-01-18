@@ -11,5 +11,32 @@
       "secondary": "#FFC19B",
       "error": "#FFB4AB"
     }
-  }
+  },
+  "bottom_items": [
+    {
+      "label": "Home",
+      "icon": "home",
+      "module": "home"
+    },
+    {
+      "label": "Menu 1",
+      "icon": "home",
+      "module": ""
+    },
+    {
+      "label": "Menu 2",
+      "icon": "home",
+      "module": ""
+    },
+    {
+      "label": "Menu 3",
+      "icon": "home",
+      "module": ""
+    },
+    {
+      "label": "Menu 4",
+      "icon": "home",
+      "module": ""
+    }
+  ]
 }

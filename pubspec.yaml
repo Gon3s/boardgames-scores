@@ -44,6 +44,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  # An SVG rendering and widget library for Flutter, which allows painting and displaying Scalable Vector Graphics 1.1 files.
+  flutter_svg: ^2.0.9
+
   # A simple way to access state from anywhere in your application while robust and testable.
   flutter_riverpod: ^2.4.9
 
@@ -84,6 +87,7 @@ flutter:
   assets:
     - assets/images/
     - assets/config/
+    - assets/icons/
 
 flutter_intl:
   enabled: true

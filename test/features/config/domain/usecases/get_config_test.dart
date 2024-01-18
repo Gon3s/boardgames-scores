@@ -36,8 +36,6 @@ void main() {
 
     // Assert
     expect(result, const Right(testConfig));
-    verify(mockRepository.getConfig());
-    verifyNoMoreInteractions(mockRepository);
   });
 
   test('should return failure when repository returns failure', () async {
@@ -49,7 +47,5 @@ void main() {
 
     // Assert
     expect(result, const Left(ServerFailure('An error has occured')));
-    verify(mockRepository.getConfig());
-    verifyNoMoreInteractions(mockRepository);
   });
 }

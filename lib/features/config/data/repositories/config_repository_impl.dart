@@ -18,9 +18,7 @@ class ConfigRepositoryImpl implements ConfigRepository {
   Future<Either<Failure, ConfigEntity>> getConfig() async {
     try {
       final config = await localDataSource.getConfig();
-      Print.blue('DLOG::', 'getConfig: $config');
-
-      return Right(config);
+      return Right(config.toEntity());
     } on ServerExeption {
       return const Left(ServerFailure('An error has occured'));
     }

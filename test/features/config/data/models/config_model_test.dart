@@ -5,13 +5,37 @@ import 'package:poc_generic_app/features/config/domain/entities/config.dart';
 void main() {
   const testConfigModel = ConfigModel(
     appName: 'Test App',
-    lightColors: {'primary': '#00629D', 'secondary': '#FC975', 'error': '#BA1A1A'},
-    darkColors: {'primary': '#98CBFF', 'secondary': '#FFC19B', 'error': '#FFB4AB'},
+    lightColors: ColorModel(
+      text: '#FFFFFF',
+      primary: '#00629D',
+      secondary: '#FC9759',
+      error: '#BA1A1A',
+      background: '#F5F5F5',
+    ),
+    darkColors: ColorModel(
+      text: '#FFFFFF',
+      primary: '#00629D',
+      secondary: '#FC9759',
+      error: '#BA1A1A',
+      background: '#F5F5F5',
+    ),
+    bottomItems: const [
+      BottomNavBarItemModel(
+        label: 'Home',
+        icon: 'home',
+        route: 'home',
+      ),
+      BottomNavBarItemModel(
+        label: 'Settings',
+        icon: 'settings',
+        route: 'settings',
+      ),
+    ],
   );
 
   test('should be a subclass of ConfigEntity entity', () async {
     // Assert
-    expect(testConfigModel, isA<ConfigEntity>());
+    expect(testConfigModel.toEntity(), isA<ConfigEntity>());
   });
 
   test('should return a valid model from json', () async {
@@ -19,9 +43,13 @@ void main() {
     final Map<String, dynamic> jsonMap = {
       'app_name': 'Test App',
       'colors': {
-        'light': {'primary': '#00629D', 'secondary': '#FC975', 'error': '#BA1A1A'},
-        'dark': {'primary': '#98CBFF', 'secondary': '#FFC19B', 'error': '#FFB4AB'}
-      }
+        'light': {'text': '#FFFFFF', 'primary': '#00629D', 'secondary': '#FC9759', 'error': '#BA1A1A', 'background': '#F5F5F5'},
+        'dark': {'text': '#FFFFFF', 'primary': '#00629D', 'secondary': '#FC9759', 'error': '#BA1A1A', 'background': '#F5F5F5'}
+      },
+      'bottom_items': [
+        {'label': 'Home', 'icon': 'home', 'route': 'home'},
+        {'label': 'Settings', 'icon': 'settings', 'route': 'settings'},
+      ]
     };
 
     // Act

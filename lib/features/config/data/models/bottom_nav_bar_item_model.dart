@@ -1,6 +1,8 @@
+import 'package:equatable/equatable.dart';
+
 import '../../domain/entities/bottom_nav_bar_item.dart';
 
-class BottomNavBarItemModel {
+class BottomNavBarItemModel extends Equatable {
   const BottomNavBarItemModel({
     required this.label,
     required this.icon,
@@ -26,4 +28,11 @@ class BottomNavBarItemModel {
       route: route,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        label,
+        icon,
+        route,
+      ];
 }

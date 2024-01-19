@@ -1,6 +1,10 @@
 import 'package:equatable/equatable.dart';
 
 import 'bottom_nav_bar_item.dart';
+import 'color.dart';
+
+export 'bottom_nav_bar_item.dart';
+export 'color.dart';
 
 class ConfigEntity extends Equatable {
   const ConfigEntity({
@@ -11,8 +15,8 @@ class ConfigEntity extends Equatable {
   });
 
   final String appName;
-  final Map<String, dynamic> lightColors;
-  final Map<String, dynamic> darkColors;
+  final ColorEntity lightColors;
+  final ColorEntity darkColors;
   final List<BottomNavBarItemEntity> bottomItems;
 
   @override

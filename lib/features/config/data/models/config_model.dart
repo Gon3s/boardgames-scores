@@ -1,7 +1,14 @@
-import '../../domain/entities/config.dart';
-import 'bottom_nav_bar_item_model.dart';
+import 'package:equatable/equatable.dart';
 
-class ConfigModel {
+import '../../domain/entities/config.dart';
+
+import 'bottom_nav_bar_item_model.dart';
+import 'color_model.dart';
+
+export 'bottom_nav_bar_item_model.dart';
+export 'color_model.dart';
+
+class ConfigModel extends Equatable {
   const ConfigModel({
     required this.appName,
     required this.lightColors,
@@ -10,15 +17,15 @@ class ConfigModel {
   });
 
   final String appName;
-  final Map<String, dynamic> lightColors;
-  final Map<String, dynamic> darkColors;
+  final ColorModel lightColors;
+  final ColorModel darkColors;
   final List<BottomNavBarItemModel> bottomItems;
 
   factory ConfigModel.fromJson(Map<String, dynamic> json) {
     return ConfigModel(
       appName: json['app_name'],
-      lightColors: json['colors']['light'],
-      darkColors: json['colors']['dark'],
+      lightColors: ColorModel.fromJson(json['colors']['light']),
+      darkColors: ColorModel.fromJson(json['colors']['dark']),
       bottomItems: json['bottom_items'].map((e) => BottomNavBarItemModel.fromJson(e)).toList().cast<BottomNavBarItemModel>(),
     );
   }
@@ -26,14 +33,17 @@ class ConfigModel {
   ConfigEntity toEntity() {
     return ConfigEntity(
       appName: appName,
-      lightColors: lightColors,
-      darkColors: darkColors,
+      lightColors: lightColors.toEntity(),
+      darkColors: darkColors.toEntity(),
       bottomItems: bottomItems.map((e) => e.toEntity()).toList(),
     );
   }
 
   @override
-  String toString() {
-    return 'ConfigModel(appName: $appName, lightColors: $lightColors, darkColors: $darkColors, bottomItems: $bottomItems)';
-  }
+  List<Object?> get props => [
+        appName,
+        lightColors,
+        darkColors,
+        bottomItems,
+      ];
 }

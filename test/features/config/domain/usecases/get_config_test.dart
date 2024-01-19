@@ -23,8 +23,32 @@ void main() {
 
   const testConfig = ConfigEntity(
     appName: 'Test App',
-    lightColors: {'primary': '#00629D', 'secondary': '#FC975', 'error': '#BA1A1A'},
-    darkColors: {'primary': '#00629D', 'secondary': '#FC975', 'error': '#BA1A1A'},
+    lightColors: ColorEntity(
+      text: '#FFFFFF',
+      primary: '#00629D',
+      secondary: '#FC975',
+      error: '#BA1A1A',
+      background: '#F5F5F5',
+    ),
+    darkColors: ColorEntity(
+      text: '#FFFFFF',
+      primary: '#00629D',
+      secondary: '#FC975',
+      error: '#BA1A1A',
+      background: '#F5F5F5',
+    ),
+    bottomItems: [
+      BottomNavBarItemEntity(
+        label: 'Home',
+        icon: 'home',
+        route: 'home',
+      ),
+      BottomNavBarItemEntity(
+        label: 'Settings',
+        icon: 'settings.svg',
+        route: 'settings',
+      ),
+    ],
   );
 
   test('should get config from the repository', () async {

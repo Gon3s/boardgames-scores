@@ -1,6 +1,6 @@
+import 'package:boardgames_scores/features/config/data/models/config_model.dart';
+import 'package:boardgames_scores/features/config/domain/entities/config.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:poc_generic_app/features/config/data/models/config_model.dart';
-import 'package:poc_generic_app/features/config/domain/entities/config.dart';
 
 void main() {
   const testConfigModel = ConfigModel(

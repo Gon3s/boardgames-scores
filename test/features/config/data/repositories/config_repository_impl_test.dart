@@ -1,13 +1,12 @@
+import 'package:boardgames_scores/core/error/index.dart';
+import 'package:boardgames_scores/features/config/data/data_sources/local_data_source.dart';
+import 'package:boardgames_scores/features/config/data/models/config_model.dart';
+import 'package:boardgames_scores/features/config/data/repositories/config_repository_impl.dart';
+import 'package:boardgames_scores/features/config/domain/entities/config.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-
-import 'package:poc_generic_app/core/error/index.dart';
-import 'package:poc_generic_app/features/config/data/data_sources/local_data_source.dart';
-import 'package:poc_generic_app/features/config/data/models/config_model.dart';
-import 'package:poc_generic_app/features/config/data/repositories/config_repository_impl.dart';
-import 'package:poc_generic_app/features/config/domain/entities/config.dart';
 
 import 'config_repository_impl_test.mocks.dart';
 

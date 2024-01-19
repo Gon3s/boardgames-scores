@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../theme/app_theme.dart';
 
 class ToggleTheme extends ConsumerWidget {
-  
   final double size;
   const ToggleTheme({super.key, this.size = 20.0});
 

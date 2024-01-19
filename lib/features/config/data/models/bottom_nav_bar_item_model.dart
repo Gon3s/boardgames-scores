@@ -2,17 +2,20 @@ import '../../domain/entities/bottom_nav_bar_item.dart';
 
 class BottomNavBarItemModel {
   const BottomNavBarItemModel({
-    this.label,
+    required this.label,
     required this.icon,
+    required this.route,
   });
 
-  final String? label;
+  final String label;
   final String icon;
+  final String route;
 
   factory BottomNavBarItemModel.fromJson(Map<String, dynamic> json) {
     return BottomNavBarItemModel(
-      label: json['label'] as String?,
+      label: json['label'] as String,
       icon: json['icon'] as String,
+      route: json['route'] as String,
     );
   }
 
@@ -20,6 +23,7 @@ class BottomNavBarItemModel {
     return BottomNavBarItemEntity(
       label: label,
       icon: icon,
+      route: route,
     );
   }
 }

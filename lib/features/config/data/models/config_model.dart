@@ -1,4 +1,3 @@
-import '../../domain/entities/bottom_nav_bar_item.dart';
 import '../../domain/entities/config.dart';
 import 'bottom_nav_bar_item_model.dart';
 

@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../generated/l10n.dart';
 import '../features/config/domain/providers/config_future_provider.dart';
 import 'app_env.dart';
+import 'presentation/theme/app_theme.dart';
 import 'route/router.dart';
-import 'theme/app_theme.dart';
 import 'utils/colored_debug_printer.dart';
 
 class MyApp extends ConsumerWidget {

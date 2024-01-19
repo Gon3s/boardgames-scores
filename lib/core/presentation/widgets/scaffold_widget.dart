@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../features/config/domain/entities/bottom_nav_bar_item.dart';
-import '../app_env.dart';
+import '../../app_env.dart';
 import 'appbar_widget.dart';
 import 'bottom_navigation_bar_widget.dart';
 

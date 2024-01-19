@@ -2,41 +2,45 @@
   "app_name": "POC Generic APP (MOCK)",
   "colors": {
     "light": {
+      "text": "#000000",
       "primary": "#00629D",
       "secondary": "#FC9759",
-      "error": "#BA1A1A"
+      "error": "#BA1A1A",
+      "background": "#F5F5F5"
     },
     "dark": {
+      "text": "#FFFFFF",
       "primary": "#98CBFF",
       "secondary": "#FFC19B",
-      "error": "#FFB4AB"
+      "error": "#FFB4AB",
+      "background": "#1A1A1A"
     }
   },
   "bottom_items": [
     {
       "label": "Home",
       "icon": "home",
-      "module": "home"
+      "route": "home"
     },
     {
-      "label": "Menu 1",
-      "icon": "home",
-      "module": ""
+      "label": "DataTable",
+      "icon": "datatable",
+      "route": "datatable"
     },
     {
       "label": "Menu 2",
       "icon": "home",
-      "module": ""
+      "route": ""
     },
     {
       "label": "Menu 3",
       "icon": "home",
-      "module": ""
+      "route": ""
     },
     {
       "label": "Menu 4",
       "icon": "home",
-      "module": ""
+      "route": ""
     }
   ]
 }

@@ -1,9 +1,11 @@
 class BottomNavBarItemEntity {
-  final String? label;
+  final String label;
   final String icon;
+  final String route;
 
   const BottomNavBarItemEntity({
-    this.label,
+    required this.label,
     required this.icon,
+    required this.route,
   });
 }

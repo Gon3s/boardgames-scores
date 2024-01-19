@@ -3,10 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/app_env.dart';
 import '../../../core/presentation/widgets/scaffold_widget.dart';
-import '../../../core/presentation/widgets/toggle_theme.dart';
 
-class HomeScreen extends ConsumerWidget {
-  const HomeScreen({super.key});
+class DataTableScreen extends ConsumerWidget {
+  const DataTableScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,16 +14,11 @@ class HomeScreen extends ConsumerWidget {
         title: Text(EnvInfo.appName),
         displayAppBar: true,
         appBarDisplayLeading: false,
-        appBarActions: const [
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: ToggleTheme(),
-          ),
-        ],
         body: const Center(
-          child: Text('HOME SCREEN'),
+          child: Text('DATA TABLE SCREEN'),
         ),
         displayBottomNavigationBar: true,
+        currentIndex: 1,
       ),
     );
   }

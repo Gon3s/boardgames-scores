@@ -39,7 +39,7 @@ class _CustomAppBarState extends ConsumerState<AppBarWidget> {
                 Icons.arrow_back_ios,
                 color: Theme.of(context).iconTheme.color,
               ),
-              onPressed: widget.onLeadingPressed ?? () => context.pop(true),
+              onPressed: widget.onLeadingPressed ?? () => context.canPop() ? context.pop(true) : null,
             )
           : null,
       actions: widget.actions.isNotEmpty ? widget.actions : const [],

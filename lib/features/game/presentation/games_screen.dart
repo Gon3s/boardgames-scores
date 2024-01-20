@@ -59,8 +59,9 @@ class _ContentGamesScreen extends StatelessWidget {
               return ListTile(
                 title: Text(game.name),
                 trailing: const Icon(Icons.arrow_forward_ios),
-                onTap: () => context.go(
-                  '/players/${game.id}',
+                onTap: () => context.push(
+                  '/players',
+                  extra: game,
                 ),
               );
             },

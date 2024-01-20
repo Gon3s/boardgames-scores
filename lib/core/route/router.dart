@@ -1,12 +1,9 @@
 import 'package:go_router/go_router.dart';
 
-import '../../features/datatable/route.dart';
-import '../../features/home/route.dart';
+import '../../features/game/route.dart';
 
 final GoRouter router = GoRouter(
   routes: <RouteBase>[
-    homeRoute,
-    dataTableRoute,
+    gamesRoute,
   ],
-  debugLogDiagnostics: true,
 );

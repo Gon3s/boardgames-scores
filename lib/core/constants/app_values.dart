@@ -5,6 +5,12 @@ class AppValues {
 
   static const String appThemeStorageKey = 'AppTheme';
 
+  //$ Margins
+  static const double defaultMargin = 16;
+
+  //$ Paddings
+  static const double defaultPadding = 16;
+
   //$ Default Radius
   static const double defaultRadius = 8;
 

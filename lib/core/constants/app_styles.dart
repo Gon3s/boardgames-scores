@@ -27,6 +27,12 @@ class AppStyles {
   static const double _caption = 12;
   static const double _indication = 10;
 
+  static TextStyle headline1TextStyle = const TextStyle(
+    fontSize: _headline1,
+    fontWeight: FontWeight.w600,
+    letterSpacing: _normalLetterSpacing,
+  );
+
   //* Custom Text Styles
   //$ App Bar Title
   static TextStyle appBarTitleStyle = const TextStyle(

@@ -4,6 +4,7 @@ analyzer:
   exclude:
     - build/**
     - lib/generated/**
+    - _default/**
   errors:
     missing_return: warning
     todo: warning

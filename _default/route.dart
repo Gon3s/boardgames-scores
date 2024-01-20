@@ -1,16 +1,16 @@
+import 'package:boardgames_scores/core/presentation/transitions/fade_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/presentation/transitions/fade_transition.dart';
-import 'presentation/datatable_screen.dart';
+import 'presentation/default_screen.dart';
 
-final RouteBase dataTableRoute = GoRoute(
-  name: 'datatable',
-  path: '/datatable',
+final RouteBase defaultRoute = GoRoute(
+  name: 'default',
+  path: '/',
   pageBuilder: (BuildContext context, GoRouterState state) {
     return CustomTransitionPage<void>(
       key: state.pageKey,
-      child: const DataTableScreen(),
+      child: const DefaultScreen(),
       transitionDuration: const Duration(milliseconds: 150),
       transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
         return fadeTransitionBuilder(context, animation, secondaryAnimation, child);

@@ -1,5 +1,5 @@
 {
-  "app_name": "POC Generic APP (MOCK)",
+  "app_name": "Boardgames Scores (MOCK)",
   "colors": {
     "light": {
       "text": "#000000",
@@ -16,31 +16,5 @@
       "background": "#1A1A1A"
     }
   },
-  "bottom_items": [
-    {
-      "label": "Home",
-      "icon": "home",
-      "route": "home"
-    },
-    {
-      "label": "DataTable",
-      "icon": "datatable",
-      "route": "datatable"
-    },
-    {
-      "label": "Menu 2",
-      "icon": "home",
-      "route": ""
-    },
-    {
-      "label": "Menu 3",
-      "icon": "home",
-      "route": ""
-    },
-    {
-      "label": "Menu 4",
-      "icon": "home",
-      "route": ""
-    }
-  ]
+  "bottom_items": []
 }

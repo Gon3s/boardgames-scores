@@ -50,7 +50,7 @@ class _CustomScaffoldState extends ConsumerState<ScaffoldWidget> {
             )
           : null,
       body: widget.body,
-      bottomNavigationBar: widget.displayAppBar
+      bottomNavigationBar: widget.displayAppBar && EnvInfo.config!.bottomItems.isNotEmpty
           ? BottomNavigationBarWidget(
               currentIndex: widget.currentIndex,
               items: EnvInfo.config!.bottomItems,

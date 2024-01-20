@@ -14,7 +14,7 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final configAsync = ref.watch(configFutureProvider);
+    final configAsync = ref.watch(getConfigFutureProvider);
     final themeMode = ref.watch(appThemeProvider);
 
     return configAsync.when(data: (config) {
@@ -59,7 +59,8 @@ class MyApp extends ConsumerWidget {
       );
     }, loading: () {
       return const _MaterialApp(CircularProgressIndicator());
-    });
+      },
+    );
   }
 }
 

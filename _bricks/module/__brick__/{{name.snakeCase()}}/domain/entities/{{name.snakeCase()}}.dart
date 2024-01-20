@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
-class DefaultEntity extends Equatable {
+class {{name.pascalCase()}}Entity extends Equatable {
   final int id;
   final String name;
 
-  const DefaultEntity({
+  const {{name.pascalCase()}}Entity({
     required this.id,
     required this.name,
   });

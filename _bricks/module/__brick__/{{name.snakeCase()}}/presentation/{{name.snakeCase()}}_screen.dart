@@ -1,9 +1,10 @@
-import 'package:boardgames_scores/core/presentation/widgets/scaffold_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DefaultScreen extends ConsumerWidget {
-  const DefaultScreen({super.key});
+import '../../../core/presentation/widgets/scaffold_widget.dart';
+
+class {{name.pascalCase()}}Screen extends ConsumerWidget {
+  const {{name.pascalCase()}}Screen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

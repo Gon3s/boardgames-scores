@@ -4,7 +4,7 @@ analyzer:
   exclude:
     - build/**
     - lib/generated/**
-    - _default/**
+    - _bricks/**
   errors:
     missing_return: warning
     todo: warning

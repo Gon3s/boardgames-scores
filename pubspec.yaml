@@ -38,6 +38,8 @@ dependencies:
   # A Dart package that helps to implement value based equality without needing to explicitly override == and hashCode.
   equatable: ^2.0.5
 
+  floor: ^1.4.2
+
   flutter:
     sdk: flutter
 
@@ -65,6 +67,8 @@ dev_dependencies:
 
   # A build system for Dart code generation and modular compilation.
   build_runner: ^2.4.8
+
+  floor_generator: ^1.4.2
 
   # An opiniated, community-driven set of lint rules for Dart and Flutter projects.
   lint: ^1.8.2

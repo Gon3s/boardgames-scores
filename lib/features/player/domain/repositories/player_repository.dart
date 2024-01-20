@@ -4,5 +4,5 @@ import '../../../../core/error/failure.dart';
 import '../entities/player.dart';
 
 abstract class PlayerRepository {
-  Future<Either<Failure, List<PlayerEntity>>> getPlayer();
+  Future<Either<Failure, List<PlayerEntity>>> getPlayers();
 }

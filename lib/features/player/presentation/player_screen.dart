@@ -20,10 +20,19 @@ class PlayerScreen extends ConsumerWidget {
 
     return SafeArea(
       child: ScaffoldWidget(
-        title: const Text('Title'),
+        title: Text(
+          game.name,
+        ),
         displayAppBar: true,
         appBarDisplayLeading: true,
-        appBarOnLeadingPressed: () => context.pop(true),
+        appBarActions: [
+          IconButton(
+            onPressed: () {
+              context.push('/players/create').then((value) => ref.refresh(getPlayersFutureProvider));
+            },
+            icon: const Icon(Icons.add),
+          ),
+        ],
         body: players.when(
           data: (players) => _ContentPlayerScreen(players: players),
           error: (_, error) => ErrorScreen(message: error.toString()),

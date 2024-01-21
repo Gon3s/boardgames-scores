@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/presentation/transitions/fade_transition.dart';
 import '../game/domain/entities/game.dart';
+import 'presentation/create/create_player_screen.dart';
 import 'presentation/player_screen.dart';
 
 final RouteBase playerRoute = GoRoute(
@@ -18,4 +19,20 @@ final RouteBase playerRoute = GoRoute(
       },
     );
   },
+  routes: <RouteBase>[
+    GoRoute(
+      name: 'createPlayer',
+      path: 'create',
+      pageBuilder: (BuildContext context, GoRouterState state) {
+        return CustomTransitionPage<void>(
+          key: state.pageKey,
+          child: CreatePlayerScreen(),
+          transitionDuration: const Duration(milliseconds: 150),
+          transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+            return fadeTransitionBuilder(context, animation, secondaryAnimation, child);
+          },
+        );
+      },
+    ),
+  ],
 );

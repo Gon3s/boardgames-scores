@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/data/database/database.dart';
 import '../../../../core/error/failure.dart';
+import '../../../../core/utils/colored_debug_printer.dart';
 import '../../domain/entities/player.dart';
 import '../../domain/repositories/player_repository.dart';
 
@@ -13,33 +14,19 @@ final playerRepositoryProvider = Provider<PlayerRepository>((ref) {
 
 class PlayerRepositoryImpl extends PlayerRepository {
   @override
-  Future<Either<Failure, List<PlayerEntity>>> getPlayers() async {
+  Future<Either<Failure, List<PlayerEntity>>> getPlayers() async { 
+    // Simulate a delay
+    await Future.delayed(const Duration(seconds: 1));
+
     try {
       final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
 
-      return Right(
-        database.personDao.findAllPlayers().then(
-              (value) => value
-                  .map(
-                    (e) => e.toEntity(),
-                  )
-                  .toList(),
-            ) as List<PlayerEntity>,
-      );
-    } catch (e) {
-      return Left(DatabaseFailure(e.toString()));
-    }
-  }
+      final players = await database.personDao.findAllPlayers();
+      final playerEntities = players.map((e) => e.toEntity()).toList();
 
-  @override
-  Future<Either<Failure, void>> deletePlayer(PlayerEntity player) async {
-    try {
-      final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
-
-      return Right(
-        database.personDao.deletePlayer(player.toModel()),
-      );
+      return Right(playerEntities);
     } catch (e) {
+      Print.red('DLOG', e.toString());
       return Left(DatabaseFailure(e.toString()));
     }
   }
@@ -64,6 +51,19 @@ class PlayerRepositoryImpl extends PlayerRepository {
 
       return Right(
         database.personDao.updatePlayer(player.toModel()),
+      );
+    } catch (e) {
+      return Left(DatabaseFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deletePlayer(PlayerEntity player) async {
+    try {
+      final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
+
+      return Right(
+        database.personDao.deletePlayer(player.toModel()),
       );
     } catch (e) {
       return Left(DatabaseFailure(e.toString()));

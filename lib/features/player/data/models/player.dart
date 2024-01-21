@@ -6,7 +6,7 @@ import '../../domain/entities/player.dart';
 @entity
 class Player extends Equatable {
   @primaryKey
-  final int id;
+  final int? id;
   final String name;
 
   const Player({

@@ -3,11 +3,11 @@ import 'package:equatable/equatable.dart';
 import '../../data/models/player.dart';
 
 class PlayerEntity extends Equatable {
-  final int id;
+  final int? id;
   final String name;
 
   const PlayerEntity({
-    required this.id,
+    this.id,
     required this.name,
   });
 

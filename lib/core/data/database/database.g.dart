@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Player` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Player` (`id` INTEGER, `name` TEXT NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -138,14 +138,14 @@ class _$PlayerDao extends PlayerDao {
   Future<List<Player>> findAllPlayers() async {
     return _queryAdapter.queryList('SELECT * FROM player',
         mapper: (Map<String, Object?> row) =>
-            Player(id: row['id'] as int, name: row['name'] as String));
+            Player(id: row['id'] as int?, name: row['name'] as String));
   }
 
   @override
   Future<Player?> findPlayerById(int id) async {
     return _queryAdapter.query('SELECT * FROM player WHERE id = ?1',
         mapper: (Map<String, Object?> row) =>
-            Player(id: row['id'] as int, name: row['name'] as String),
+            Player(id: row['id'] as int?, name: row['name'] as String),
         arguments: [id]);
   }
 

@@ -17,6 +17,11 @@ class ScaffoldWidget extends ConsumerStatefulWidget {
   final bool displayBottomNavigationBar;
   final int currentIndex;
 
+  final bool displayFloatingActionButton;
+  final FloatingActionButtonLocation? floatingActionButtonLocation;
+  final void Function()? onFloatingActionButtonPressed;
+  final Widget? floatingActionButtonIcon;
+
   final Widget body;
 
   const ScaffoldWidget({
@@ -28,8 +33,12 @@ class ScaffoldWidget extends ConsumerStatefulWidget {
     this.appBarOnLeadingPressed,
     required this.body,
     this.appBarActions = const [],
-    required this.displayBottomNavigationBar,
+    this.displayBottomNavigationBar = false,
     this.currentIndex = 0,
+    this.displayFloatingActionButton = false,
+    this.floatingActionButtonLocation,
+    this.onFloatingActionButtonPressed,
+    this.floatingActionButtonIcon,
   });
 
   @override
@@ -56,6 +65,13 @@ class _CustomScaffoldState extends ConsumerState<ScaffoldWidget> {
               items: EnvInfo.config!.bottomItems,
             )
           : null,
+      floatingActionButton: widget.displayFloatingActionButton
+          ? FloatingActionButton(
+              onPressed: widget.onFloatingActionButtonPressed,
+              child: widget.floatingActionButtonIcon,
+            )
+          : null,
+      floatingActionButtonLocation: widget.floatingActionButtonLocation ?? FloatingActionButtonLocation.endFloat,
     );
   }
 }

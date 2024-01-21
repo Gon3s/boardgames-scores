@@ -21,7 +21,7 @@ mixin _$CreatePlayerState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failure exception) error,
-    required TResult Function() success,
+    required TResult Function(PlayerEntity player) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$CreatePlayerState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Failure exception)? error,
-    TResult? Function()? success,
+    TResult? Function(PlayerEntity player)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$CreatePlayerState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failure exception)? error,
-    TResult Function()? success,
+    TResult Function(PlayerEntity player)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,7 +127,7 @@ class _$InitialImpl implements Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failure exception) error,
-    required TResult Function() success,
+    required TResult Function(PlayerEntity player) success,
   }) {
     return initial();
   }
@@ -138,7 +138,7 @@ class _$InitialImpl implements Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Failure exception)? error,
-    TResult? Function()? success,
+    TResult? Function(PlayerEntity player)? success,
   }) {
     return initial?.call();
   }
@@ -149,7 +149,7 @@ class _$InitialImpl implements Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failure exception)? error,
-    TResult Function()? success,
+    TResult Function(PlayerEntity player)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -241,7 +241,7 @@ class _$LoadingImpl implements Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failure exception) error,
-    required TResult Function() success,
+    required TResult Function(PlayerEntity player) success,
   }) {
     return loading();
   }
@@ -252,7 +252,7 @@ class _$LoadingImpl implements Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Failure exception)? error,
-    TResult? Function()? success,
+    TResult? Function(PlayerEntity player)? success,
   }) {
     return loading?.call();
   }
@@ -263,7 +263,7 @@ class _$LoadingImpl implements Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failure exception)? error,
-    TResult Function()? success,
+    TResult Function(PlayerEntity player)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -382,7 +382,7 @@ class _$ErrorImpl implements Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failure exception) error,
-    required TResult Function() success,
+    required TResult Function(PlayerEntity player) success,
   }) {
     return error(exception);
   }
@@ -393,7 +393,7 @@ class _$ErrorImpl implements Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Failure exception)? error,
-    TResult? Function()? success,
+    TResult? Function(PlayerEntity player)? success,
   }) {
     return error?.call(exception);
   }
@@ -404,7 +404,7 @@ class _$ErrorImpl implements Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failure exception)? error,
-    TResult Function()? success,
+    TResult Function(PlayerEntity player)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -465,6 +465,8 @@ abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PlayerEntity player});
 }
 
 /// @nodoc
@@ -474,26 +476,50 @@ class __$$SuccessImplCopyWithImpl<$Res>
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? player = null,
+  }) {
+    return _then(_$SuccessImpl(
+      null == player
+          ? _value.player
+          : player // ignore: cast_nullable_to_non_nullable
+              as PlayerEntity,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SuccessImpl implements Success {
-  const _$SuccessImpl();
+  const _$SuccessImpl(this.player);
+
+  @override
+  final PlayerEntity player;
 
   @override
   String toString() {
-    return 'CreatePlayerState.success()';
+    return 'CreatePlayerState.success(player: $player)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SuccessImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessImpl &&
+            (identical(other.player, player) || other.player == player));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, player);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -501,9 +527,9 @@ class _$SuccessImpl implements Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failure exception) error,
-    required TResult Function() success,
+    required TResult Function(PlayerEntity player) success,
   }) {
-    return success();
+    return success(player);
   }
 
   @override
@@ -512,9 +538,9 @@ class _$SuccessImpl implements Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Failure exception)? error,
-    TResult? Function()? success,
+    TResult? Function(PlayerEntity player)? success,
   }) {
-    return success?.call();
+    return success?.call(player);
   }
 
   @override
@@ -523,11 +549,11 @@ class _$SuccessImpl implements Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failure exception)? error,
-    TResult Function()? success,
+    TResult Function(PlayerEntity player)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(player);
     }
     return orElse();
   }
@@ -571,5 +597,10 @@ class _$SuccessImpl implements Success {
 }
 
 abstract class Success implements CreatePlayerState {
-  const factory Success() = _$SuccessImpl;
+  const factory Success(final PlayerEntity player) = _$SuccessImpl;
+
+  PlayerEntity get player;
+  @JsonKey(ignore: true)
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

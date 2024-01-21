@@ -4,6 +4,8 @@ analyzer:
   exclude:
     - build/**
     - lib/generated/**
+    - lib/**.g.dart
+    - lib/**.freezed.dart
     - _bricks/**
   errors:
     missing_return: warning

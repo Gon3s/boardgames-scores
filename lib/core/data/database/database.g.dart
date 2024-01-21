@@ -150,8 +150,9 @@ class _$PlayerDao extends PlayerDao {
   }
 
   @override
-  Future<void> insertPlayer(Player player) async {
-    await _playerInsertionAdapter.insert(player, OnConflictStrategy.abort);
+  Future<int> insertPlayer(Player player) {
+    return _playerInsertionAdapter.insertAndReturnId(
+        player, OnConflictStrategy.abort);
   }
 
   @override

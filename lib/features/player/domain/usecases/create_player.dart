@@ -13,7 +13,7 @@ class CreatePlayersUseCase {
 
   CreatePlayersUseCase(this._repository);
 
-  Future<Either<Failure, void>> call(String name) async {
+  Future<Either<Failure, PlayerEntity>> call(String name) async {
     final PlayerEntity player = PlayerEntity(name: name);
     return _repository.insertPlayer(player);
   }

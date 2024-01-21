@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/presentation/transitions/fade_transition.dart';
 import '../game/domain/entities/game.dart';
-import 'presentation/create/create_player_screen.dart';
-import 'presentation/player_screen.dart';
+import 'presentation/screens/create_player_screen.dart';
+import 'presentation/screens/player_screen.dart';
 
 final RouteBase playerRoute = GoRoute(
   name: 'player',

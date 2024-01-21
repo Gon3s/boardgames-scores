@@ -8,15 +8,6 @@ import '../repositories/player_repository.dart';
 
 final getPlayersUsecaseProvider = Provider<GetPlayersUseCase>((ref) => GetPlayersUseCase(ref.read(playerRepositoryProvider)));
 
-final getPlayersFutureProvider = FutureProvider<List<PlayerEntity>>(
-  (ref) => ref.read(getPlayersUsecaseProvider).call().then(
-        (value) => value.fold(
-          (failure) => throw failure,
-          (player) => player,
-        ),
-      ),
-);
-
 class GetPlayersUseCase {
   final PlayerRepository _repository;
 

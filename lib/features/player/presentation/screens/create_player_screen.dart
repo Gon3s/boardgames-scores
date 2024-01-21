@@ -4,10 +4,9 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_values.dart';
 import '../../../../core/presentation/widgets/scaffold_widget.dart';
-import '../../domain/usecases/get_player.dart';
-import 'provider/create_player_notifier.dart';
-import 'provider/create_player_provider.dart';
-import 'provider/create_player_state.dart';
+import '../providers/create_player/create_player_provider.dart';
+import '../providers/create_player/create_player_state.dart';
+import '../providers/players_list/players_list_notifier.dart';
 
 class CreatePlayerScreen extends ConsumerWidget {
   CreatePlayerScreen({super.key});
@@ -31,6 +30,7 @@ class CreatePlayerScreen extends ConsumerWidget {
             ),
           );
         } else if (next is Success) {
+          ref.read(playersListNotifierProvider.notifier).addPlayer(next.player);
           context.pop(true);
         }
       },

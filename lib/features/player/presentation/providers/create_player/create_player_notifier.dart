@@ -15,7 +15,7 @@ class CreatePlayerNotifier extends StateNotifier<CreatePlayerState> {
 
     result.fold(
       (failure) => state = CreatePlayerState.error(failure),
-      (_) => state = const CreatePlayerState.success(),
+      (player) => state = CreatePlayerState.success(player),
     );
   }
 }

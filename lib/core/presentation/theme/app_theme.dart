@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../app_env.dart';
 import '../../constants/app_styles.dart';
 import '../../constants/app_values.dart';
 import '../../data/local/storage_service.dart';
@@ -19,21 +18,17 @@ class AppThemes {
     useMaterial3: true,
     brightness: Brightness.light,
     fontFamily: AppStyles.fontFamily,
-    primaryColor: EnvInfo.primaryLightColor,
-    colorScheme: ColorScheme.light(
-      primary: EnvInfo.primaryLightColor,
-      secondary: EnvInfo.secondaryLightColor,
-      error: EnvInfo.errorLightColor,
+    colorScheme: ColorScheme.fromSwatch(
+      primarySwatch: Colors.green,
+      accentColor: Colors.yellow,
+      cardColor: Colors.green,
+      backgroundColor: Colors.white24,
+      brightness: Brightness.light,
     ),
 
     //! App Bar
-    appBarTheme: AppBarTheme(
-      backgroundColor: EnvInfo.backgroundLightColor,
+    appBarTheme: const AppBarTheme(
       elevation: AppValues.appBarElevation,
-      foregroundColor: EnvInfo.primaryLightColor,
-      titleTextStyle: AppStyles.appBarTitleStyle.copyWith(
-        color: EnvInfo.textLightColor,
-      ),
     ),
 
     //! Bottom Navigation Bar
@@ -41,13 +36,8 @@ class AppThemes {
       elevation: AppValues.bottomNavBarElevation,
       enableFeedback: true,
       type: AppValues.bottomNavBarType,
-      backgroundColor: EnvInfo.backgroundLightColor,
       selectedLabelStyle: AppStyles.bottomNavBarSelectedItemTextStyle,
-      selectedItemColor: EnvInfo.primaryLightColor,
       unselectedLabelStyle: AppStyles.bottomNavBarUnselectedItemTextStyle,
-      unselectedItemColor: EnvInfo.textLightColor,
-      selectedIconTheme: IconThemeData(color: EnvInfo.primaryLightColor),
-      unselectedIconTheme: IconThemeData(color: EnvInfo.textLightColor),
     ),
   );
 
@@ -55,21 +45,17 @@ class AppThemes {
     useMaterial3: true,
     brightness: Brightness.dark,
     fontFamily: AppStyles.fontFamily,
-    primaryColor: EnvInfo.primaryDarkColor,
-    colorScheme: ColorScheme.dark(
-      primary: EnvInfo.primaryDarkColor,
-      secondary: EnvInfo.secondaryDarkColor,
-      error: EnvInfo.errorDarkColor,
+    colorScheme: ColorScheme.fromSwatch(
+      primarySwatch: Colors.green,
+      accentColor: Colors.yellow,
+      cardColor: Colors.green,
+      backgroundColor: Colors.black26,
+      brightness: Brightness.dark,
     ),
 
     //! App Bar
-    appBarTheme: AppBarTheme(
-      backgroundColor: EnvInfo.backgroundDarkColor,
+    appBarTheme: const AppBarTheme(
       elevation: AppValues.appBarElevation,
-      foregroundColor: EnvInfo.primaryDarkColor,
-      titleTextStyle: AppStyles.appBarTitleStyle.copyWith(
-        color: EnvInfo.textDarkColor,
-      ),
     ),
 
     //! Bottom Navigation Bar
@@ -77,13 +63,8 @@ class AppThemes {
       elevation: AppValues.bottomNavBarElevation,
       enableFeedback: true,
       type: AppValues.bottomNavBarType,
-      backgroundColor: EnvInfo.backgroundDarkColor,
       selectedLabelStyle: AppStyles.bottomNavBarSelectedItemTextStyle,
-      selectedItemColor: EnvInfo.primaryDarkColor,
       unselectedLabelStyle: AppStyles.bottomNavBarUnselectedItemTextStyle,
-      unselectedItemColor: EnvInfo.textDarkColor,
-      selectedIconTheme: IconThemeData(color: EnvInfo.primaryDarkColor),
-      unselectedIconTheme: IconThemeData(color: EnvInfo.textDarkColor),
     ),
   );
 }

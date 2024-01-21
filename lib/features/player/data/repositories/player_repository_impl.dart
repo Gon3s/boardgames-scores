@@ -11,13 +11,9 @@ final playerRepositoryProvider = Provider<PlayerRepository>((ref) {
   return PlayerRepositoryImpl();
 });
 
-
 class PlayerRepositoryImpl extends PlayerRepository {
   @override
-  Future<Either<Failure, List<PlayerEntity>>> getPlayers() async { 
-    // Simulate a delay
-    await Future.delayed(const Duration(seconds: 1));
-
+  Future<Either<Failure, List<PlayerEntity>>> getPlayers() async {
     try {
       final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
 
@@ -32,12 +28,14 @@ class PlayerRepositoryImpl extends PlayerRepository {
   }
 
   @override
-  Future<Either<Failure, void>> insertPlayer(PlayerEntity player) async {
+  Future<Either<Failure, PlayerEntity>> insertPlayer(PlayerEntity player) async {
     try {
       final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
-
+      final id = await database.personDao.insertPlayer(player.toModel());
       return Right(
-        database.personDao.insertPlayer(player.toModel()),
+        player.copyWith(
+          id: id,
+        ),
       );
     } catch (e) {
       return Left(DatabaseFailure(e.toString()));

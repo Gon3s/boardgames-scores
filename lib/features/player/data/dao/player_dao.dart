@@ -11,7 +11,7 @@ abstract class PlayerDao {
   Future<Player?> findPlayerById(int id);
 
   @insert
-  Future<void> insertPlayer(Player player);
+  Future<int> insertPlayer(Player player);
 
   @update
   Future<void> updatePlayer(Player player);

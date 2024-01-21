@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/presentation/screen/error_screen.dart';
+import '../../../core/presentation/widgets/circular_progress_widget.dart';
 import '../../../core/presentation/widgets/scaffold_widget.dart';
 import '../../game/domain/entities/game.dart';
 import '../domain/entities/player.dart';
@@ -24,10 +26,8 @@ class PlayerScreen extends ConsumerWidget {
         appBarOnLeadingPressed: () => context.pop(true),
         body: players.when(
           data: (players) => _ContentPlayerScreen(players: players),
-          error: (_, error) => Center(child: Text(error.toString())),
-          loading: () => const Center(
-            child: CircularProgressIndicator(),
-          ),
+          error: (_, error) => ErrorScreen(message: error.toString()),
+          loading: () => const CircularProgressWidget(),
         ),
         displayBottomNavigationBar: false,
       ),

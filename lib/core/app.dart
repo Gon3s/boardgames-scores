@@ -6,6 +6,7 @@ import '../../generated/l10n.dart';
 import '../features/config/domain/providers/config_future_provider.dart';
 import 'app_env.dart';
 import 'presentation/theme/app_theme.dart';
+import 'presentation/widgets/circular_progress_widget.dart';
 import 'route/router.dart';
 import 'utils/colored_debug_printer.dart';
 
@@ -58,7 +59,7 @@ class MyApp extends ConsumerWidget {
         ),
       );
     }, loading: () {
-      return const _MaterialApp(CircularProgressIndicator());
+        return const _MaterialApp(CircularProgressWidget());
       },
     );
   }

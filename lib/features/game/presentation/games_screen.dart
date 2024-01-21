@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 import '../../../core/app_env.dart';
 import '../../../core/constants/app_styles.dart';
 import '../../../core/constants/app_values.dart';
+import '../../../core/presentation/screen/error_screen.dart';
+import '../../../core/presentation/widgets/circular_progress_widget.dart';
 import '../../../core/presentation/widgets/scaffold_widget.dart';
 import '../domain/entities/game.dart';
 import '../domain/providers/get_games_future_provider.dart';
@@ -23,10 +25,8 @@ class GamesScreen extends ConsumerWidget {
         appBarDisplayLeading: false,
         body: games.when(
           data: (games) => _ContentGamesScreen(games: games),
-          error: (_, error) => Center(child: Text(error.toString())),
-          loading: () => const Center(
-            child: CircularProgressIndicator(),
-          ),
+          error: (_, error) => ErrorScreen(message: error.toString()),
+          loading: () => const CircularProgressWidget(),
         ),
         displayBottomNavigationBar: false,
       ),

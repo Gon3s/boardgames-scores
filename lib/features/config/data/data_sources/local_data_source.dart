@@ -15,7 +15,7 @@ class LocalDataSourceImpl implements LocalDataSource {
   Future<ConfigModel> getConfig() async {
     try {
       final String jsonString = await rootBundle.loadString('assets/config/config.${EnvInfo.environment.name}.json');
-      final data = await json.decode(jsonString);
+      final Map<String, dynamic> data = await json.decode(jsonString) as Map<String, dynamic>;
       return ConfigModel.fromJson(data);
     } catch (e) {
       Print.red('DLOG', e.toString());

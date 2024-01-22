@@ -39,13 +39,10 @@ void _setEnvironmentFromStringValue(String environment) {
   switch (environment) {
     case 'mock':
       EnvInfo.init(Environment.mock);
-      break;
     case 'dev':
       EnvInfo.init(Environment.dev);
-      break;
     case 'prod':
       EnvInfo.init(Environment.prod);
-      break;
   }
 
   

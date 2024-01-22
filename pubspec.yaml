@@ -30,7 +30,7 @@ environment:
 dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.6
 
   # Functional Programming in Dart. Purify your Dart code using efficient immutable data structures, monads, lenses and other FP tools.
   dartz: ^0.10.1
@@ -78,13 +78,13 @@ dev_dependencies:
   freezed: ^2.4.6
 
   # An opiniated, community-driven set of lint rules for Dart and Flutter projects.
-  lint: ^1.8.2
+  lint: ^2.3.0
 
   # A mock framework inspired by Mockito with APIs for Fakes, Mocks, behavior verification, and stubbing.
   mockito: ^5.4.4
 
   # A Dart mock library which simplifies mocking with null safety support and no manual mocks or code generation.
-  mocktail: ^1.0.2
+  mocktail: ^1.0.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -18,8 +18,8 @@ class GameModel extends Equatable {
       ];
 
   factory GameModel.fromJson(Map<String, dynamic> json) => GameModel(
-        id: json['id'],
-        name: json['name'],
+        id: json['id'] as int,
+        name: json['name'] as String,
       );
 
   GameEntity toEntity() => GameEntity(

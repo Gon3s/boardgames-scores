@@ -20,7 +20,7 @@ mixin _$CreatePlayerState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Failure exception) error,
+    required TResult Function(String message) error,
     required TResult Function(PlayerEntity player) success,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$CreatePlayerState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Failure exception)? error,
+    TResult? Function(String message)? error,
     TResult? Function(PlayerEntity player)? success,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$CreatePlayerState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Failure exception)? error,
+    TResult Function(String message)? error,
     TResult Function(PlayerEntity player)? success,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$InitialImpl implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Failure exception) error,
+    required TResult Function(String message) error,
     required TResult Function(PlayerEntity player) success,
   }) {
     return initial();
@@ -137,7 +137,7 @@ class _$InitialImpl implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Failure exception)? error,
+    TResult? Function(String message)? error,
     TResult? Function(PlayerEntity player)? success,
   }) {
     return initial?.call();
@@ -148,7 +148,7 @@ class _$InitialImpl implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Failure exception)? error,
+    TResult Function(String message)? error,
     TResult Function(PlayerEntity player)? success,
     required TResult orElse(),
   }) {
@@ -240,7 +240,7 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Failure exception) error,
+    required TResult Function(String message) error,
     required TResult Function(PlayerEntity player) success,
   }) {
     return loading();
@@ -251,7 +251,7 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Failure exception)? error,
+    TResult? Function(String message)? error,
     TResult? Function(PlayerEntity player)? success,
   }) {
     return loading?.call();
@@ -262,7 +262,7 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Failure exception)? error,
+    TResult Function(String message)? error,
     TResult Function(PlayerEntity player)? success,
     required TResult orElse(),
   }) {
@@ -320,7 +320,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Failure exception});
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -334,13 +334,13 @@ class __$$ErrorImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? exception = null,
+    Object? message = null,
   }) {
     return _then(_$ErrorImpl(
-      null == exception
-          ? _value.exception
-          : exception // ignore: cast_nullable_to_non_nullable
-              as Failure,
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -348,14 +348,14 @@ class __$$ErrorImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ErrorImpl implements Error {
-  const _$ErrorImpl(this.exception);
+  const _$ErrorImpl(this.message);
 
   @override
-  final Failure exception;
+  final String message;
 
   @override
   String toString() {
-    return 'CreatePlayerState.error(exception: $exception)';
+    return 'CreatePlayerState.error(message: $message)';
   }
 
   @override
@@ -363,12 +363,11 @@ class _$ErrorImpl implements Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
-            (identical(other.exception, exception) ||
-                other.exception == exception));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, exception);
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
@@ -381,10 +380,10 @@ class _$ErrorImpl implements Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Failure exception) error,
+    required TResult Function(String message) error,
     required TResult Function(PlayerEntity player) success,
   }) {
-    return error(exception);
+    return error(message);
   }
 
   @override
@@ -392,10 +391,10 @@ class _$ErrorImpl implements Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Failure exception)? error,
+    TResult? Function(String message)? error,
     TResult? Function(PlayerEntity player)? success,
   }) {
-    return error?.call(exception);
+    return error?.call(message);
   }
 
   @override
@@ -403,12 +402,12 @@ class _$ErrorImpl implements Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Failure exception)? error,
+    TResult Function(String message)? error,
     TResult Function(PlayerEntity player)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(exception);
+      return error(message);
     }
     return orElse();
   }
@@ -452,9 +451,9 @@ class _$ErrorImpl implements Error {
 }
 
 abstract class Error implements CreatePlayerState {
-  const factory Error(final Failure exception) = _$ErrorImpl;
+  const factory Error(final String message) = _$ErrorImpl;
 
-  Failure get exception;
+  String get message;
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -526,7 +525,7 @@ class _$SuccessImpl implements Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Failure exception) error,
+    required TResult Function(String message) error,
     required TResult Function(PlayerEntity player) success,
   }) {
     return success(player);
@@ -537,7 +536,7 @@ class _$SuccessImpl implements Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Failure exception)? error,
+    TResult? Function(String message)? error,
     TResult? Function(PlayerEntity player)? success,
   }) {
     return success?.call(player);
@@ -548,7 +547,7 @@ class _$SuccessImpl implements Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Failure exception)? error,
+    TResult Function(String message)? error,
     TResult Function(PlayerEntity player)? success,
     required TResult orElse(),
   }) {

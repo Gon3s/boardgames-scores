@@ -23,10 +23,13 @@ class ConfigModel extends Equatable {
 
   factory ConfigModel.fromJson(Map<String, dynamic> json) {
     return ConfigModel(
-      appName: json['app_name'],
-      lightColors: ColorModel.fromJson(json['colors']['light']),
-      darkColors: ColorModel.fromJson(json['colors']['dark']),
-      bottomItems: json['bottom_items'].map((e) => BottomNavBarItemModel.fromJson(e)).toList().cast<BottomNavBarItemModel>(),
+      appName: json['app_name'] as String,
+      lightColors: ColorModel.fromJson(json['colors']['light'] as Map<String, dynamic>),
+      darkColors: ColorModel.fromJson(json['colors']['dark'] as Map<String, dynamic>),
+      bottomItems: (json['bottom_items'] as List<dynamic>)
+          .map((e) => BottomNavBarItemModel.fromJson(e as Map<String, dynamic>))
+          .toList()
+          .cast<BottomNavBarItemModel>(),
     );
   }
 

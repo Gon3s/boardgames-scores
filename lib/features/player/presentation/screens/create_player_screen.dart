@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_values.dart';
+import '../../../../core/presentation/widgets/buttons/button_filled_widget.dart';
 import '../../../../core/presentation/widgets/scaffold_widget.dart';
 import '../providers/create_player/create_player_provider.dart';
 import '../providers/create_player/create_player_state.dart';
@@ -25,7 +26,7 @@ class CreatePlayerScreen extends ConsumerWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                next.exception.message,
+                next.message,
               ),
             ),
           );
@@ -49,8 +50,10 @@ class CreatePlayerScreen extends ConsumerWidget {
             children: [
               TextField(
                 controller: _nameController,
+                keyboardType: TextInputType.name,
+                textCapitalization: TextCapitalization.words,
                 decoration: const InputDecoration(
-                  hintText: 'Name',
+                  hintText: 'Name',                  
                 ),
               ),
               const SizedBox(
@@ -58,13 +61,12 @@ class CreatePlayerScreen extends ConsumerWidget {
               ),
               state.maybeMap(
                 loading: (_) => const Center(child: CircularProgressIndicator()),
-                orElse: () => ElevatedButton(
-                  onPressed: () => {
-                    ref.read(createPlayerProvider.notifier).createPlayer(
-                          _nameController.text,
-                        )
+                orElse: () => ButtonFilledWidget(
+                  text: 'Save',
+                  onTap: () {
+                    ref.read(createPlayerProvider.notifier).createPlayer(_nameController.text);
                   },
-                  child: const Text('Save'),
+                  isDisabled: _nameController.text.isEmpty,
                 ),
               ),
             ],

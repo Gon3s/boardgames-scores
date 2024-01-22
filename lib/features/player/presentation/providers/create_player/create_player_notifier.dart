@@ -11,10 +11,15 @@ class CreatePlayerNotifier extends StateNotifier<CreatePlayerState> {
   Future<void> createPlayer(String name) async {
     state = const CreatePlayerState.loading();
 
+    if (name.isEmpty) {
+      state = const CreatePlayerState.error('Name cannot be empty');
+      return;
+    }
+
     final result = await _useCase.call(name);
 
     result.fold(
-      (failure) => state = CreatePlayerState.error(failure),
+      (failure) => state = CreatePlayerState.error(failure.message),
       (player) => state = CreatePlayerState.success(player),
     );
   }

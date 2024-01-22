@@ -19,11 +19,11 @@ class ColorModel extends Equatable {
 
   factory ColorModel.fromJson(Map<String, dynamic> json) {
     return ColorModel(
-      text: json['text'],
-      primary: json['primary'],
-      secondary: json['secondary'],
-      error: json['error'],
-      background: json['background'],
+      text: json['text'] as String,
+      primary: json['primary'] as String,
+      secondary: json['secondary'] as String,
+      error: json['error'] as String,
+      background: json['background'] as String,
     );
   }
 

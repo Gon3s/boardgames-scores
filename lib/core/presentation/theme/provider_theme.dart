@@ -1,4 +1,4 @@
-part of app_theme;
+part of 'app_theme.dart';
 
 final appThemeProvider = StateNotifierProvider<AppThemeModeNotifier, ThemeMode>((ref) {
   final storageService = ref.watch(storageServiceProvider);

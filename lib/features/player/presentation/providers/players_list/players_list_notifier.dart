@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../domain/entities/player.dart';
+import '../../../domain/usecases/delete_player.dart';
 import '../../../domain/usecases/get_player.dart';
 
 class PlayersListNotifier extends AutoDisposeAsyncNotifier<List<PlayerEntity>> {
@@ -18,6 +19,17 @@ class PlayersListNotifier extends AutoDisposeAsyncNotifier<List<PlayerEntity>> {
     state = AsyncData(updatedPlayers);
   }
 
+  void updatePlayer(PlayerEntity player) {
+    final players = state.valueOrNull ?? [];
+    final updatedPlayers = players.map((element) {
+      if (element.id == player.id) {
+        return player;
+      }
+      return element;
+    }).toList();
+    state = AsyncData(updatedPlayers);
+  }
+
   void togglePlayer(PlayerEntity player) {
     final players = state.valueOrNull ?? [];
     final updatedPlayers = players.map((element) {
@@ -27,6 +39,18 @@ class PlayersListNotifier extends AutoDisposeAsyncNotifier<List<PlayerEntity>> {
       return element;
     }).toList();
     state = AsyncData(updatedPlayers);
+  }
+
+  void removePlayer(PlayerEntity player) async {
+    final res = await ref.watch(deletePlayerUsecaseProvider).call(player);
+    res.fold(
+      (l) => state = AsyncError(l.message, StackTrace.current),
+      (r) {
+        final players = state.valueOrNull ?? [];
+        final updatedPlayers = players.where((element) => element.id != player.id).toList();
+        state = AsyncData(updatedPlayers);
+      },
+    );
   }
 
   bool asMinTwoPlayersSelected() {

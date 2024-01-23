@@ -3,7 +3,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/presentation/transitions/fade_transition.dart';
 import '../game/domain/entities/game.dart';
-import 'presentation/screens/create_player_screen.dart';
+import 'domain/entities/player.dart';
+import 'presentation/screens/form_player_screen.dart';
 import 'presentation/screens/player_screen.dart';
 
 final RouteBase playerRoute = GoRoute(
@@ -26,7 +27,21 @@ final RouteBase playerRoute = GoRoute(
       pageBuilder: (BuildContext context, GoRouterState state) {
         return CustomTransitionPage<void>(
           key: state.pageKey,
-          child: CreatePlayerScreen(),
+          child: FormPlayerScreen(),
+          transitionDuration: const Duration(milliseconds: 150),
+          transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+            return fadeTransitionBuilder(context, animation, secondaryAnimation, child);
+          },
+        );
+      },
+    ),
+    GoRoute(
+      name: 'editPlayer',
+      path: 'edit',
+      pageBuilder: (BuildContext context, GoRouterState state) {
+        return CustomTransitionPage<void>(
+          key: state.pageKey,
+          child: FormPlayerScreen(player: state.extra! as PlayerEntity),
           transitionDuration: const Duration(milliseconds: 150),
           transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
             return fadeTransitionBuilder(context, animation, secondaryAnimation, child);

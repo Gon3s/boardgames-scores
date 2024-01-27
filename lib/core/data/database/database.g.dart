@@ -86,6 +86,8 @@ class _$AppDatabase extends AppDatabase {
       onCreate: (database, version) async {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `Player` (`id` INTEGER, `name` TEXT NOT NULL, PRIMARY KEY (`id`))');
+        await database.execute(
+            'CREATE UNIQUE INDEX `index_Player_name` ON `Player` (`name`)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -147,6 +149,18 @@ class _$PlayerDao extends PlayerDao {
         mapper: (Map<String, Object?> row) =>
             Player(id: row['id'] as int?, name: row['name'] as String),
         arguments: [id]);
+  }
+
+  @override
+  Future<Player?> findPlayerByName(
+    int id,
+    String name,
+  ) async {
+    return _queryAdapter.query(
+        'SELECT * FROM player WHERE name = ?2 AND id != ?1',
+        mapper: (Map<String, Object?> row) =>
+            Player(id: row['id'] as int?, name: row['name'] as String),
+        arguments: [id, name]);
   }
 
   @override

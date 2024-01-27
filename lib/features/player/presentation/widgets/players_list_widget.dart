@@ -35,13 +35,49 @@ class PlayersListWidget extends ConsumerWidget {
                       confirmDismiss: (direction) async {
                         if (direction == DismissDirection.endToStart) {
                           bool delete = true;
-                          final snackbarController = ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('Deleted ${player.name}'),
-                              action: SnackBarAction(label: 'Undo', onPressed: () => delete = false),
-                            ),
+                          await showDialog<bool>(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text('Delete player "${player.name}"?'),
+                                content: const Text('Are you sure you want to delete this player?'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () => {delete = false, context.pop(false)},
+                                    child: const Text('Cancel'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () => {delete = true, context.pop(true)},
+                                    child: const Text(
+                                      'Delete',
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
                           );
-                          await snackbarController.closed;
+
+                          // final snackbarController = ScaffoldMessenger.of(context).showSnackBar(
+                          //   SnackBar(
+                          //     content: Text(
+                          //       'Deleted ${player.name}',
+                          //       style: const TextStyle(
+                          //         color: Colors.white,
+                          //       ),
+                          //     ),
+                          //     action: SnackBarAction(
+                          //       label: 'Undo',
+                          //       onPressed: () => delete = false,
+                          //       disabledTextColor: Colors.white.withOpacity(.3),
+                          //       textColor: Colors.white,
+                          //     ),
+                          //     duration: const Duration(seconds: 1),
+                          //     backgroundColor: Colors.red,
+                          //     behavior: SnackBarBehavior.floating,
+                          //   ),
+                          // );
+                          // await snackbarController.closed;
                           return delete;
                         } else if (direction == DismissDirection.startToEnd) {
                           context.pushNamed('editPlayer', extra: player);

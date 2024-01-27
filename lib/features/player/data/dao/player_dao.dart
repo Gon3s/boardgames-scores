@@ -10,6 +10,9 @@ abstract class PlayerDao {
   @Query('SELECT * FROM player WHERE id = :id')
   Future<Player?> findPlayerById(int id);
 
+  @Query('SELECT * FROM player WHERE name = :name AND id != :id')
+  Future<Player?> findPlayerByName(int id, String name);
+
   @insert
   Future<int> insertPlayer(Player player);
 

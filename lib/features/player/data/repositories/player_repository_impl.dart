@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sqflite/sqflite.dart';  
 
 import '../../../../core/data/database/database.dart';
 import '../../../../core/error/failure.dart';
@@ -12,6 +13,7 @@ final playerRepositoryProvider = Provider<PlayerRepository>((ref) {
 });
 
 class PlayerRepositoryImpl extends PlayerRepository {
+  
   @override
   Future<Either<Failure, List<PlayerEntity>>> getPlayers() async {
     try {
@@ -31,6 +33,12 @@ class PlayerRepositoryImpl extends PlayerRepository {
   Future<Either<Failure, PlayerEntity>> insertPlayer(PlayerEntity player) async {
     try {
       final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
+
+      final playerByName = await database.personDao.findPlayerByName(player.id ?? 0, player.name);
+      if (playerByName != null) {
+        return const Left(DatabaseFailure('Player already exists'));
+      }
+      
       final id = await database.personDao.insertPlayer(player.toModel());
       return Right(
         player.copyWith(
@@ -38,14 +46,20 @@ class PlayerRepositoryImpl extends PlayerRepository {
         ),
       );
     } catch (e) {
+      Print.red('DLOG', e.toString());
       return Left(DatabaseFailure(e.toString()));
-    }
+    } 
   }
 
   @override
   Future<Either<Failure, void>> updatePlayer(PlayerEntity player) async {
     try {
       final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
+
+      final playerByName = await database.personDao.findPlayerByName(player.id!, player.name);
+      if (playerByName != null) {
+        return const Left(DatabaseFailure('Player already exists'));
+      }
 
       return Right(
         database.personDao.updatePlayer(player.toModel()),

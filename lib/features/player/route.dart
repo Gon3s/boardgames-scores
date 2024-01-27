@@ -27,7 +27,7 @@ final RouteBase playerRoute = GoRoute(
       pageBuilder: (BuildContext context, GoRouterState state) {
         return CustomTransitionPage<void>(
           key: state.pageKey,
-          child: FormPlayerScreen(),
+          child: const FormPlayerScreen(),
           transitionDuration: const Duration(milliseconds: 150),
           transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
             return fadeTransitionBuilder(context, animation, secondaryAnimation, child);

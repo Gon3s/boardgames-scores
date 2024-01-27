@@ -17,6 +17,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final configAsync = ref.watch(getConfigFutureProvider);
     final themeMode = ref.watch(appThemeProvider);
+    final router = ref.watch(goRouterProvider);
 
     return configAsync.when(data: (config) {
       EnvInfo.config = config;

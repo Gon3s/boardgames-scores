@@ -3,7 +3,12 @@ import 'package:floor/floor.dart';
 
 import '../../domain/entities/player.dart';
 
-@entity
+@Entity(indices: [
+  Index(
+    value: ['name'],
+    unique: true,
+  )
+])
 class Player extends Equatable {
   @primaryKey
   final int? id;

@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../features/config/domain/entities/bottom_nav_bar_item.dart';
 import '../../constants/app_icons.dart';
 import '../../constants/app_values.dart';
+import '../../domain/model/bottom_navbar_item.dart';
 
 class BottomNavigationBarWidget extends ConsumerWidget {
   final int currentIndex;

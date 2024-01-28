@@ -1,17 +1,16 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class GameEntity extends Equatable {
-  final int id;
-  final String name;
+import 'score.dart';
 
-  const GameEntity({
-    required this.id,
-    required this.name,
-  });
+part 'game.freezed.dart';
 
-  @override
-  List<Object?> get props => [
-        id,
-        name,
-      ];
+@freezed
+class GameEntity with _$GameEntity {
+
+  const factory GameEntity({
+    required int id,
+    required String name,
+    @Default([]) List<String> steps,
+    Map<int, List<ScoreEntity>>? scores,
+  }) = _GameEntity;
 }

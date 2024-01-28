@@ -3,15 +3,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/presentation/widgets/buttons/button_filled_widget.dart';
+import '../../../game/domain/entities/game.dart';
 import '../../domain/entities/player.dart';
 import '../providers/players_list/players_list_notifier.dart';
 
 class PlayersListWidget extends ConsumerWidget {
   const PlayersListWidget({
     required this.players,
+    required this.game,
   });
 
   final List<PlayerEntity> players;
+  final GameEntity game;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -58,26 +61,6 @@ class PlayersListWidget extends ConsumerWidget {
                             },
                           );
 
-                          // final snackbarController = ScaffoldMessenger.of(context).showSnackBar(
-                          //   SnackBar(
-                          //     content: Text(
-                          //       'Deleted ${player.name}',
-                          //       style: const TextStyle(
-                          //         color: Colors.white,
-                          //       ),
-                          //     ),
-                          //     action: SnackBarAction(
-                          //       label: 'Undo',
-                          //       onPressed: () => delete = false,
-                          //       disabledTextColor: Colors.white.withOpacity(.3),
-                          //       textColor: Colors.white,
-                          //     ),
-                          //     duration: const Duration(seconds: 1),
-                          //     backgroundColor: Colors.red,
-                          //     behavior: SnackBarBehavior.floating,
-                          //   ),
-                          // );
-                          // await snackbarController.closed;
                           return delete;
                         } else if (direction == DismissDirection.startToEnd) {
                           context.pushNamed('editPlayer', extra: player);
@@ -105,7 +88,9 @@ class PlayersListWidget extends ConsumerWidget {
         ButtonFilledWidget(
           text: asMinTwoPlayersSelected ? 'Start game' : 'Select at least 2 players',
           isDisabled: !asMinTwoPlayersSelected,
-          onTap: () => {},
+          onTap: () => {
+            context.pushNamed('option', extra: game),
+          },
         ),
       ],
     );

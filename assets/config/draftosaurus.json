@@ -1,0 +1,38 @@
+{
+  "options": [
+    {
+      "steps": ["summer", "winter"]
+    }
+  ],
+  "datas": {
+    "summer": [
+      {
+        "name": "La forêt des similaires"
+      },
+      {
+        "name": "Le trio des bois"
+      },
+      {
+        "name": "La prairie des Amoureux"
+      },
+      {
+        "name": "Le roi de la jungle"
+      },
+      {
+        "name": "La plaine des différences"
+      },
+      {
+        "name": "L'ile du solitaire"
+      },
+      {
+        "name": "La rivière"
+      },
+      {
+        "name": "Score des T-Rex"
+      }
+    ],
+    "winter": {
+
+    }
+  }
+}

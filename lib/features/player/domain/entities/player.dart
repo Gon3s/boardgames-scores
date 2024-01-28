@@ -1,35 +1,18 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../data/models/player.dart';
 
-class PlayerEntity extends Equatable {
-  final int? id;
-  final String name;
-  final bool selected;
+part 'player.freezed.dart';
 
-  const PlayerEntity({
-    this.id,
-    required this.name,
-    this.selected = false,
-  });
-
-  PlayerEntity copyWith({
-    int? id,
-    String? name,
-    bool? selected,
-  }) {
-    return PlayerEntity(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      selected: selected ?? this.selected,
-    );
-  }
-
-  @override
-  List<Object?> get props => [
-        id,
-        name,
-      ];
+@freezed
+class PlayerEntity with _$PlayerEntity {
+  const factory PlayerEntity({
+    @Default(null) int? id,
+    required String name,
+    @Default(false) bool selected,
+    @Default([]) List<int> scores,
+  }) = _PlayerEntity;
+  const PlayerEntity._();
 
   Player toModel() {
     return Player(

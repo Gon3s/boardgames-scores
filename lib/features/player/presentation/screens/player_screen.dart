@@ -34,7 +34,7 @@ class PlayerScreen extends ConsumerWidget {
           ),
         ],
         body: players.when(
-          data: (players) => PlayersListWidget(players: players),
+          data: (players) => PlayersListWidget(players: players, game: game),
           error: (_, error) => ErrorScreen(message: error.toString()),
           loading: () => const CircularProgressWidget(),
         ),

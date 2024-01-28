@@ -1,26 +1,16 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../domain/entities/game.dart';
 
-class GameModel extends Equatable {
-  final int id;
-  final String name;
+part 'game.freezed.dart';
 
-  const GameModel({
-    required this.id,
-    required this.name,
-  });
-
-  @override
-  List<Object?> get props => [
-        id,
-        name,
-      ];
-
-  factory GameModel.fromJson(Map<String, dynamic> json) => GameModel(
-        id: json['id'] as int,
-        name: json['name'] as String,
-      );
+@freezed
+class GameModel with _$GameModel {
+  const factory GameModel({
+    required int id,
+    required String name,
+  }) = _GameModel;
+  GameModel._();
 
   GameEntity toEntity() => GameEntity(
         id: id,

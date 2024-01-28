@@ -9,6 +9,8 @@ class AppValues {
   static const double defaultMargin = 16;
 
   //$ Paddings
+  static const double defaultHorizontalPadding = 24;
+  static const double defaultVerticalPadding = 16;
   static const double defaultPadding = 16;
 
   //$ Default Radius

@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/app_env.dart';
-import '../../../core/constants/app_styles.dart';
-import '../../../core/constants/app_values.dart';
-import '../../../core/presentation/screen/error_screen.dart';
-import '../../../core/presentation/widgets/circular_progress_widget.dart';
-import '../../../core/presentation/widgets/scaffold_widget.dart';
-import '../domain/entities/game.dart';
-import '../domain/providers/get_games_future_provider.dart';
+import '../../../../core/app_env.dart';
+import '../../../../core/constants/app_styles.dart';
+import '../../../../core/constants/app_values.dart';
+import '../../../../core/presentation/screen/error_screen.dart';
+import '../../../../core/presentation/widgets/circular_progress_widget.dart';
+import '../../../../core/presentation/widgets/scaffold_widget.dart';
+import '../../domain/entities/game.dart';
+import '../providers/games_notifier.dart';
 
 class GamesScreen extends ConsumerWidget {
   const GamesScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final games = ref.watch(getGamesFutureProvider);
+    final games = ref.watch(gamesNotifierProvider);
 
     return SafeArea(
       child: ScaffoldWidget(

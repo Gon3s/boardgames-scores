@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../app_env.dart';
+import '../../domain/model/bottom_navbar_item.dart';
 import 'appbar_widget.dart';
 import 'bottom_navigation_bar_widget.dart';
 
@@ -16,6 +16,7 @@ class ScaffoldWidget extends ConsumerStatefulWidget {
 
   final bool displayBottomNavigationBar;
   final int currentIndex;
+  final List<BottomNavBarItemEntity> bottomItems;
 
   final bool displayFloatingActionButton;
   final FloatingActionButtonLocation? floatingActionButtonLocation;
@@ -39,6 +40,7 @@ class ScaffoldWidget extends ConsumerStatefulWidget {
     this.floatingActionButtonLocation,
     this.onFloatingActionButtonPressed,
     this.floatingActionButtonIcon,
+    this.bottomItems = const [],
   });
 
   @override
@@ -59,10 +61,10 @@ class _CustomScaffoldState extends ConsumerState<ScaffoldWidget> {
             )
           : null,
       body: widget.body,
-      bottomNavigationBar: widget.displayAppBar && EnvInfo.config!.bottomItems.isNotEmpty
+      bottomNavigationBar: widget.displayAppBar && widget.bottomItems.isNotEmpty
           ? BottomNavigationBarWidget(
               currentIndex: widget.currentIndex,
-              items: EnvInfo.config!.bottomItems,
+              items: widget.bottomItems,
             )
           : null,
       floatingActionButton: widget.displayFloatingActionButton

@@ -57,6 +57,33 @@ class PlayersListNotifier extends AutoDisposeAsyncNotifier<List<PlayerEntity>> {
     final players = state.valueOrNull ?? [];
     return players.where((element) => element.selected).length >= 2;
   }
+
+  List<PlayerEntity> getSelectedPlayers() {
+    final players = state.valueOrNull ?? [];
+    return players.where((element) => element.selected).toList();
+  }
+
+  void initScore(int length) {
+    final players = state.valueOrNull ?? [];
+    final updatedPlayers = players.map((element) {
+      final scores = List<int>.filled(length, 1);
+      return element.copyWith(scores: scores);
+    }).toList();
+    state = AsyncData(updatedPlayers);
+  }
+
+  void updateScore({required PlayerEntity player, required int score, required int index}) {
+    final players = state.valueOrNull ?? [];
+    final updatedPlayers = players.map((element) {
+      if (element.id == player.id) {
+        final scores = player.scores;
+        scores[index] = score;
+        return element.copyWith(scores: scores);
+      }
+      return element;
+    }).toList();
+    state = AsyncData(updatedPlayers);
+  }
 }
 
 final playersListNotifierProvider = AsyncNotifierProvider.autoDispose<PlayersListNotifier, List<PlayerEntity>>(PlayersListNotifier.new);
